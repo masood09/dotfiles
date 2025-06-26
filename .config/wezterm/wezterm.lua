@@ -29,5 +29,8 @@ config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 10
 
+-- Spawn a fish shell in login mode
+config.default_prog = { '/run/current-system/sw/bin/fish', '-l' }
+
 -- and finally, return the configuration to wezterm
 return config
