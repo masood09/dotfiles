@@ -15,6 +15,7 @@
       environment.systemPackages = [
         # System Utils
         pkgs.bat
+        pkgs.btop
         pkgs.coreutils
         pkgs.coreutils-prefixed
         pkgs.fzf
