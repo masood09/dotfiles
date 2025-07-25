@@ -126,7 +126,7 @@
        ;;dhall
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
-       emacs-lisp        ; drown in parentheses
+       (emacs-lisp +lsp +tree-sitter)        ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
        ;;factor
@@ -152,7 +152,7 @@
        ;;lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
-       nix               ; I hereby declare "nix geht mehr!"
+       (nix +lsp +tree-sitter)               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        org               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
