@@ -74,3 +74,20 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Non-POSIX shells (particularly Fish and Nushell) can cause
+;; unpredictable issues with any Emacs utilities that spawn child
+;; processes from shell commands (like diff-hl and in-Emacs
+;; terminals). To get around this, configure Emacs to use a POSIX shell
+;; internally, e.g.
+;;
+;; add to $DOOMDIR/config.el: (setq shell-file-name (executable-find "bash"))
+(setq shell-file-name "/run/current-system/sw/bin/bash")
+
+;; Emacs' terminal emulators can be safely configured to use your
+;; original $SHELL:
+;;
+;; add to $DOOMDIR/config.el: (setq-default vterm-shell "/nix/store/ifd04qwh32hsg1v05678fa66g3w8pi3b-fish-4.0.2/bin/fish")
+;; (setq-default explicit-shell-file-name "/nix/store/ifd04qwh32hsg1v05678fa66g3w8pi3b-fish-4.0.2/bin/fish")
+(setq-default vterm-shell "/etc/profiles/per-user/masoodahmed/bin/fish")
+(setq-default explicit-shell-file-name "/etc/profiles/per-user/masoodahmed/bin/fish")
