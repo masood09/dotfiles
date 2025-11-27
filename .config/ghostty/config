@@ -2,8 +2,8 @@
 
 theme = catppuccin-mocha.conf
 
-# font-family = MesloLGS Nerd Font
-font-family = JuliaMono Regular
+font-family = MesloLGS Nerd Font
+# font-family = JuliaMono Regular
 font-size = 14
 cursor-style = block
 cursor-style-blink = false
