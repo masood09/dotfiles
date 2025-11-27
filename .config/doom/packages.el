@@ -49,3 +49,5 @@
 ;; (unpin! t)
 
 (package! catppuccin-theme)
+(package! gptel :recipe (:nonrecursive t))
+(package! gptel-magit)

@@ -21,14 +21,26 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-;; (setq doom-font (font-spec :family "MesloLGS Nerd Font" :size 16))
-(setq doom-font (font-spec :family "JuliaMono" :size 14 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "JuliaMono" :size 14))
+(setq doom-font (font-spec :family "MesloLGS Nerd Font" :size 14))
+;; (setq doom-font (font-spec :family "JuliaMono" :size 14 :weight 'semi-light)
+      ;; doom-variable-pitch-font (font-spec :family "JuliaMono" :size 14))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
+
+(custom-theme-set-faces!
+  'doom-tokyo-night
+  '(org-level-8 :inherit outline-3 :height 1.0)
+  '(org-level-7 :inherit outline-3 :height 1.0)
+  '(org-level-6 :inherit outline-3 :height 1.1)
+  '(org-level-5 :inherit outline-3 :height 1.2)
+  '(org-level-4 :inherit outline-3 :height 1.3)
+  '(org-level-3 :inherit outline-3 :height 1.4)
+  '(org-level-2 :inherit outline-2 :height 1.5)
+  '(org-level-1 :inherit outline-1 :height 1.6)
+  '(org-document-title :height 1.8 :bold t :underline nil))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -43,6 +55,9 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+(setq org-modern-table-vertical 1)
+(setq org-modern-table t)
+(add-hook 'org-mode-hook #'hl-todo-mode)
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -77,47 +92,10 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; set cursor color/shape defaults
-(after! evil
-  (setq evil-default-cursor '(t "#EBCB8B")
-        evil-normal-state-cursor '("#EBCB8B" box)
-        evil-insert-state-cursor '("#FFFFFF" bar)
-        evil-visual-state-cursor '("#FFFFFF" hbar))
-  (evil-ex-define-cmd "W" 'save-buffer))
-
 ;; enable language-aware word wrap in most buffers
 (+global-word-wrap-mode t)
 
-;; make Org auto-insert a timestamp when a task cycles to DONE
-(after! org-mode
-  (setq org-log-done 'time)
-  (add-hook 'org-mode-hook #'auto-fill-mode))
-
-;; change Git commit summary length
-(after! magit
-  (setq magit-commit-summary-max-length 72))
-
-(after! markdown-mode
-  ;; allow .mdx files to use markdown-mode
-  (add-hook 'markdown-mode-hook #'auto-fill-mode))
-(add-to-list 'auto-mode-alist '("\\.mdx\\'" . markdown-mode))
-
-(setq
- projectile-project-root-functions '(projectile-root-marked
-                                     projectile-root-local
-                                     projectile-root-top-down
-                                     projectile-root-top-down-recurring
-                                     projectile-root-bottom-up))
-
 (setq projectile-project-search-path '("~/code/"))
-
-;; turn off spellcheck for text-mode (and all derived modes)
-(after! text-mode
-  (remove-hook! 'text-mode-hook #'spell-fu-mode))
-
-;; enable spellchecking in markdown mode
-(after! markdown-mode
-  (add-hook! 'markdown-mode-hook #'spell-fu-mode))
 
 ;; Non-POSIX shells (particularly Fish and Nushell) can cause
 ;; unpredictable issues with any Emacs utilities that spawn child
