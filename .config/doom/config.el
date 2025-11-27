@@ -104,19 +104,16 @@
 ;; internally, e.g.
 ;;
 ;; add to $DOOMDIR/config.el: (setq shell-file-name (executable-find "bash"))
-(setq shell-file-name "/run/current-system/sw/bin/bash")
+;; (setq shell-file-name "/run/current-system/sw/bin/bash")
 
 ;; Emacs' terminal emulators can be safely configured to use your
 ;; original $SHELL:
 ;;
 ;; add to $DOOMDIR/config.el: (setq-default vterm-shell "/nix/store/ifd04qwh32hsg1v05678fa66g3w8pi3b-fish-4.0.2/bin/fish")
 ;; (setq-default explicit-shell-file-name "/nix/store/ifd04qwh32hsg1v05678fa66g3w8pi3b-fish-4.0.2/bin/fish")
-(setq-default vterm-shell "/etc/profiles/per-user/masoodahmed/bin/fish")
-(setq-default explicit-shell-file-name "/etc/profiles/per-user/masoodahmed/bin/fish")
+;; (setq-default vterm-shell "/etc/profiles/per-user/masoodahmed/bin/fish")
+;; (setq-default explicit-shell-file-name "/etc/profiles/per-user/masoodahmed/bin/fish")
 
 ;; don't bug me when I'm trying to exit
 (setq confirm-kill-emacs nil)
 (setq confirm-kill-processes nil)
-
-;; (after! nix-mode
-;; (set-formatter! 'nixfmt '("nix" "fmt" filepath) :modes '(nix-mode)))
