@@ -51,3 +51,6 @@
 (package! catppuccin-theme)
 (package! gptel :recipe (:nonrecursive t))
 (package! gptel-magit)
+
+(package! gptel-forge-prs
+  :recipe (:host github :repo "ArthurHeymans/gptel-forge-prs"))

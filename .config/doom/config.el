@@ -123,3 +123,8 @@
   :after magit
   :hook (magit-mode . gptel-magit-install))
 
+;; gptel + forge integration
+(use-package! gptel-forge-prs
+  :after forge
+  :config
+  (gptel-forge-prs-install))
