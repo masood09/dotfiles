@@ -117,3 +117,9 @@
 ;; don't bug me when I'm trying to exit
 (setq confirm-kill-emacs nil)
 (setq confirm-kill-processes nil)
+
+;; gptel + magit integration
+(use-package! gptel-magit
+  :after magit
+  :hook (magit-mode . gptel-magit-install))
+
