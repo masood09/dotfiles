@@ -487,3 +487,8 @@ on-mode-changed = []
 [[on-window-detected]]
     if.app-id = 'com.sentinelone.SentinelAgent'
     run = ['layout floating']
+
+# 1Password
+[[on-window-detected]]
+    if.app-id = 'com.1password.1password'
+    run = ['layout floating']
