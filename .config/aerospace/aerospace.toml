@@ -477,3 +477,13 @@ on-mode-changed = []
 [[on-window-detected]]
     if.app-id = 'com.runningwithcrayons.Alfred-Preferences'
     run = ['layout floating']
+
+# JAMF Self Service
+[[on-window-detected]]
+    if.app-id = 'com.jamfsoftware.selfservice.mac'
+    run = ['layout floating']
+
+# Sentinel Agent
+[[on-window-detected]]
+    if.app-id = 'com.sentinelone.SentinelAgent'
+    run = ['layout floating']
