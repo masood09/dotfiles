@@ -10,6 +10,10 @@
 (setq user-full-name "Masood Ahmed"
       user-mail-address "me@ahmedmasood.com")
 
+;; Per-machine override (Pantheon laptop/host)
+(when (file-regular-p (expand-file-name "~/.work-pantheon"))
+  (setq user-mail-address "masoodahmed@pantheon.io"))
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
