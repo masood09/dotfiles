@@ -190,3 +190,290 @@ on-mode-changed = []
     alt-shift-j = ['join-with down', 'mode main']
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
+
+
+
+# ========== Workspace Assignment Rules (Ordered by Workspace) ==========
+
+# ───── Workspace 1 — Work Browser ─────
+# Zen Browser → Workspace 1
+[[on-window-detected]]
+    if.app-id = 'app.zen-browser.zen'
+    run = ['move-node-to-workspace 1']
+
+# Google Chrome → Workspace 1
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = ['move-node-to-workspace 1']
+
+
+# ───── Workspace 2 — Editing / Dev ─────
+# Emacs → Workspace 2
+[[on-window-detected]]
+    if.app-id = 'org.gnu.Emacs'
+    run = ['move-node-to-workspace 2']
+
+
+# ───── Workspace 3 — Terminal ─────
+# Ghostty → Workspace 3
+[[on-window-detected]]
+    if.app-id = 'com.mitchellh.ghostty'
+    run = ['move-node-to-workspace 3']
+
+
+# ───── Workspace 4 — Chat / Communication ─────
+# Element (Matrix) → Workspace 4
+[[on-window-detected]]
+    if.app-id = 'im.riot.app'
+    run = ['move-node-to-workspace 4']
+
+# Discord → Workspace 4
+[[on-window-detected]]
+    if.app-id = 'com.hnc.Discord'
+    run = ['move-node-to-workspace 4']
+
+# Slack → Workspace 4
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    run = ['move-node-to-workspace 4']
+
+
+
+# ==========================================
+# ========== Always floating apps ==========
+# ==========================================
+
+# ========== macOS System Apps ==========
+
+# Activity Monitor
+[[on-window-detected]]
+    if.app-id = 'com.apple.ActivityMonitor'
+    run = ['layout floating']
+
+# AirPort Utility
+[[on-window-detected]]
+    if.app-id = 'com.apple.airport.airportutility'
+    run = ['layout floating']
+
+# App Store
+[[on-window-detected]]
+    if.app-id = 'com.apple.AppStore'
+    run = ['layout floating']
+
+# Audio MIDI Setup
+[[on-window-detected]]
+    if.app-id = 'com.apple.audio.AudioMIDISetup'
+    run = ['layout floating']
+
+# Automator
+[[on-window-detected]]
+    if.app-id = 'com.apple.Automator'
+    run = ['layout floating']
+
+# Books
+[[on-window-detected]]
+    if.app-id = 'com.apple.iBooksX'
+    run = ['layout floating']
+
+# Calculator
+[[on-window-detected]]
+    if.app-id = 'com.apple.calculator'
+    run = ['layout floating']
+
+# Calendar
+[[on-window-detected]]
+    if.app-id = 'com.apple.iCal'
+    run = ['layout floating']
+
+# Chess
+[[on-window-detected]]
+    if.app-id = 'com.apple.Chess'
+    run = ['layout floating']
+
+# Clock
+[[on-window-detected]]
+    if.app-id = 'com.apple.clock'
+    run = ['layout floating']
+
+# ColorSync Utility
+[[on-window-detected]]
+    if.app-id = 'com.apple.ColorSyncUtility'
+    run = ['layout floating']
+
+# Console
+[[on-window-detected]]
+    if.app-id = 'com.apple.Console'
+    run = ['layout floating']
+
+# Contacts
+[[on-window-detected]]
+    if.app-id = 'com.apple.AddressBook'
+    run = ['layout floating']
+
+# Dictionary
+[[on-window-detected]]
+    if.app-id = 'com.apple.Dictionary'
+    run = ['layout floating']
+
+# Disk Utility
+[[on-window-detected]]
+    if.app-id = 'com.apple.DiskUtility'
+    run = ['layout floating']
+
+# FaceTime
+[[on-window-detected]]
+    if.app-id = 'com.apple.FaceTime'
+    run = ['layout floating']
+
+# Find My
+[[on-window-detected]]
+    if.app-id = 'com.apple.findmy'
+    run = ['layout floating']
+
+# Finder
+[[on-window-detected]]
+    if.app-id = 'com.apple.finder'
+    run = ['layout floating']
+
+# Freeform
+[[on-window-detected]]
+    if.app-id = 'com.apple.freeform'
+    run = ['layout floating']
+
+# Grapher
+[[on-window-detected]]
+    if.app-id = 'com.apple.grapher'
+    run = ['layout floating']
+
+# Home
+[[on-window-detected]]
+    if.app-id = 'com.apple.Home'
+    run = ['layout floating']
+
+# Keychain Access
+[[on-window-detected]]
+    if.app-id = 'com.apple.keychainaccess'
+    run = ['layout floating']
+
+# Maps
+[[on-window-detected]]
+    if.app-id = 'com.apple.Maps'
+    run = ['layout floating']
+
+# Messages
+[[on-window-detected]]
+    if.app-id = 'com.apple.MobileSMS'
+    run = ['layout floating']
+
+# Notes
+[[on-window-detected]]
+    if.app-id = 'com.apple.Notes'
+    run = ['layout floating']
+
+# Photo Booth
+[[on-window-detected]]
+    if.app-id = 'com.apple.PhotoBooth'
+    run = ['layout floating']
+
+# Podcasts
+[[on-window-detected]]
+    if.app-id = 'com.apple.podcasts'
+    run = ['layout floating']
+
+# Preview
+[[on-window-detected]]
+    if.app-id = 'com.apple.Preview'
+    run = ['layout floating']
+
+# QuickTime Player
+[[on-window-detected]]
+    if.app-id = 'com.apple.QuickTimePlayerX'
+    run = ['layout floating']
+
+# Reminders
+[[on-window-detected]]
+    if.app-id = 'com.apple.reminders'
+    run = ['layout floating']
+
+# Shortcuts
+[[on-window-detected]]
+    if.app-id = 'com.apple.shortcuts'
+    run = ['layout floating']
+
+# Stocks
+[[on-window-detected]]
+    if.app-id = 'com.apple.stocks'
+    run = ['layout floating']
+
+# System Settings / Preferences
+[[on-window-detected]]
+    if.app-id = 'com.apple.systempreferences'
+    run = ['layout floating']
+
+# TextEdit
+[[on-window-detected]]
+    if.app-id = 'com.apple.TextEdit'
+    run = ['layout floating']
+
+# Time Machine
+[[on-window-detected]]
+    if.app-id = 'com.apple.backup.launcher'
+    run = ['layout floating']
+
+# TV
+[[on-window-detected]]
+    if.app-id = 'com.apple.TV'
+    run = ['layout floating']
+
+# Voice Memos
+[[on-window-detected]]
+    if.app-id = 'com.apple.VoiceMemos'
+    run = ['layout floating']
+
+# VoiceOver Utility
+[[on-window-detected]]
+    if.app-id = 'com.apple.VoiceOverUtility'
+    run = ['layout floating']
+
+# Weather
+[[on-window-detected]]
+    if.app-id = 'com.apple.weather'
+    run = ['layout floating']
+
+
+# ========== Third-Party Apps ==========
+
+# Bitwarden
+[[on-window-detected]]
+    if.app-id = 'com.bitwarden.desktop'
+    run = ['layout floating']
+
+# Karabiner Settings
+[[on-window-detected]]
+    if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
+    run = ['layout floating']
+
+# OpenCloud Desktop
+[[on-window-detected]]
+    if.app-id = 'eu.opencloud.desktop'
+    run = ['layout floating']
+
+# Tailscale
+[[on-window-detected]]
+    if.app-id = 'io.tailscale.ipn.macsys'
+    run = ['layout floating']
+
+# Shortcat
+[[on-window-detected]]
+    if.app-id = 'com.sproutcube.Shortcat'
+    run = ['layout floating']
+
+# Amphetamine
+[[on-window-detected]]
+    if.app-id = 'com.if.Amphetamine'
+    run = ['layout floating']
+
+# Alfred Preferences
+[[on-window-detected]]
+    if.app-id = 'com.runningwithcrayons.Alfred-Preferences'
+    run = ['layout floating']
