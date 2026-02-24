@@ -4,21 +4,9 @@
 # Catppuccin Mocha Colors
 ########################################
 
-BASE=0xff1e1e2e
-MANTLE=0xff181825
-CRUST=0xff11111b
-
-SURFACE0=0xff313244
-SURFACE1=0xff45475a
-
 TEXT=0xffcdd6f4
 SUBTEXT0=0xffa6adc8
-OVERLAY0=0xff6c7086
-
-BLUE=0xff89b4fa
 MAUVE=0xffcba6f7
-LAVENDER=0xffb4befe
-GREEN=0xffa6e3a1
 PEACH=0xfffab387
 
 PADDINGS=3
