@@ -4,13 +4,10 @@
 # Catppuccin Mocha Colors
 ########################################
 
-TEXT=0xffcdd6f4
 GREEN=0xffa6e3a1
 YELLOW=0xfff9e2af
 PEACH=0xfffab387
 RED=0xfff38ba8
-BLUE=0xff89b4fa
-TEAL=0xff94e2d5
 
 ########################################
 # Get battery info
@@ -56,7 +53,7 @@ esac
 
 if [ -n "$CHARGING" ]; then
   ICON=""
-  COLOR=$BLUE
+  COLOR=$GREEN
 fi
 
 ########################################
