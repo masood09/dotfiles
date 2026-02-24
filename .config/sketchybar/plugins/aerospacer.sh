@@ -4,7 +4,7 @@ SID="$1"
 
 TEXT=0xffcdd6f4
 SUBTEXT0=0xffa6adc8
-BLUE=0xff89b4fa
+MAUVE=0xffcba6f7
 
 if [ "$SID" = "$FOCUSED_WORKSPACE" ]; then
   sketchybar --set "$NAME" \
@@ -12,7 +12,7 @@ if [ "$SID" = "$FOCUSED_WORKSPACE" ]; then
     icon.highlight=on \
     background.drawing=on \
     background.height=3 \
-    background.color=$BLUE \
+    background.color=$MAUVE \
     background.y_offset=-13
 else
   sketchybar --set "$NAME" \

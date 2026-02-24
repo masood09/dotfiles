@@ -61,7 +61,7 @@ default=(
 
   background.drawing=off
 
-  icon.highlight_color=$BLUE
+  icon.highlight_color=$MAUVE
 )
 
 sketchybar --default "${default[@]}"
