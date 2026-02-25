@@ -54,3 +54,7 @@
 
 (package! gptel-forge-prs
   :recipe (:host github :repo "ArthurHeymans/gptel-forge-prs"))
+
+(package! slack
+  :recipe (:host github :repo "emacs-slack/emacs-slack"))
+(package! alert)

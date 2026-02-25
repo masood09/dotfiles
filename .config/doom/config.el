@@ -138,3 +138,26 @@
   :after forge
   :config
   (gptel-forge-prs-install))
+
+(use-package slack
+  :config
+  (slack-register-team
+   :name "pantheon"
+   :token (auth-source-pick-first-password
+           :host "pantheon.slack.com"
+           :user "masoodahmed@pantheon.io^token")
+   :enterprise-token (auth-source-pick-first-password
+           :host "pantheon.slack.com"
+           :user "masoodahmed@pantheon.io^enterprise-token")
+   :cookie (auth-source-pick-first-password
+            :host "pantheon.slack.com"
+            :user "masoodahmed@pantheon.io^cookie")
+   :full-and-display-names t
+   :default t
+   :subscribed-channels nil ;; using slack-extra-subscribed-channels because I can change it dynamically
+   ))
+
+(use-package alert
+  :commands (alert)
+  :init
+  (setq alert-default-style 'notifier))
