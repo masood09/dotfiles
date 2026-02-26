@@ -3,9 +3,6 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-;; Load Doom's auto-generated envvars
-(doom-load-envvars-file "~/.config/emacs/.local/env")
-
 ;; Per-machine override (Pantheon laptop/host)
 (when (file-regular-p (expand-file-name "~/.work-pantheon"))
   (doom-load-envvars-file "~/.config/doom/pantenton.envvar"))
