@@ -497,3 +497,8 @@ on-mode-changed = []
 [[on-window-detected]]
     if.app-id = 'us.zoom.xos'
     run = ['layout floating']
+
+# Podman Desktop
+[[on-window-detected]]
+    if.app-id = 'io.podmandesktop.PodmanDesktop'
+    run = ['layout floating']
