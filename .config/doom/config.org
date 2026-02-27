@@ -19,6 +19,29 @@ Make this file run slightly faster (see [[https://nullprogram.com/blog/2016/12/2
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 #+end_src
 
+* Table of Contents :toc:
+- [[#overview][Overview]]
+- [[#startup-prerequisites][Startup prerequisites]]
+  - [[#environment-variables][Environment variables]]
+  - [[#identity][Identity]]
+- [[#editing-defaults][Editing defaults]]
+  - [[#language-aware-soft-wrapping][Language-aware soft wrapping]]
+- [[#projects][Projects]]
+- [[#org-mode][Org mode]]
+  - [[#org-directory][Org directory]]
+  - [[#tables-and-todo-highlighting][Tables and TODO highlighting]]
+- [[#look-and-feel][Look and feel]]
+  - [[#font][Font]]
+  - [[#theme][Theme]]
+  - [[#line-numbers][Line numbers]]
+  - [[#org-heading-typography][Org heading typography]]
+- [[#ai-and-developer-integrations][AI and developer integrations]]
+  - [[#gptel--magit][GPTel + Magit]]
+- [[#apps][Apps]]
+  - [[#slack-for-work][Slack (For work)]]
+  - [[#alert-for-work][Alert (For work)]]
+- [[#exit-behavior][Exit behavior]]
+
 * Startup prerequisites
 ** Environment variables
 Load machine specific envvars file.
