@@ -28,7 +28,11 @@ Make this file run slightly faster (see [[https://nullprogram.com/blog/2016/12/2
   - [[#language-aware-soft-wrapping][Language-aware soft wrapping]]
 - [[#projects][Projects]]
 - [[#org-mode][Org mode]]
-  - [[#org-directory][Org directory]]
+  - [[#org-paths][Org paths]]
+  - [[#task-management][Task management]]
+  - [[#capture-templates][Capture templates]]
+  - [[#agenda-views][Agenda views]]
+  - [[#usage][Usage]]
   - [[#tables-and-todo-highlighting][Tables and TODO highlighting]]
 - [[#look-and-feel][Look and feel]]
   - [[#font][Font]]
@@ -85,12 +89,146 @@ Projectile is my project indexer. I keep my working directories under =~/code=.
 #+end_src
 
 * Org mode
-** Org directory
-Org needs =org-directory= set before Org loads so capture, agenda, etc. use the right paths.
+** Org paths
+Org file paths are defined early so capture targets never evaluate to nil.
 
 #+begin_src emacs-lisp
-(setq org-directory "~/org/")
+(setq org-directory (expand-file-name "~/org/")
+      org-inbox-file (expand-file-name "inbox.org" org-directory)
+      org-projects-file (expand-file-name "projects.org" org-directory)
+      org-tickler-file (expand-file-name "tickler.org" org-directory))
 #+end_src
+
+** Task management
+This section defines where tasks live, how I capture them quickly, and how I review them.
+
+I use a simple workflow:
+- Capture everything into an inbox quickly.
+- Triage inbox items into projects.
+- Use Agenda to drive the day/week.
+
+*** Files
+These are the core Org files used by capture and agenda.
+
+#+begin_src emacs-lisp
+(after! org
+  (setq org-default-notes-file org-inbox-file
+        org-agenda-files (list org-inbox-file
+                               org-projects-file
+                               org-tickler-file)))
+#+end_src
+
+*** TODO states
+I keep a small state machine: TODO → NEXT → DONE, with WAIT/CANCELLED when needed.
+
+#+begin_src emacs-lisp
+(after! org
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELLED(c@)"))))
+#+end_src
+
+*** Refile targets
+Refiling is how I move tasks from my inbox into the right project heading.
+I keep it shallow and fast (up to level 3 in projects).
+
+#+begin_src emacs-lisp
+(after! org
+  (setq org-refile-use-outline-path 'file
+        org-outline-path-complete-in-steps nil
+        org-refile-targets
+        `((,org-projects-file :maxlevel . 3)
+          (,org-inbox-file :maxlevel . 2))))
+#+end_src
+
+** Capture templates
+Capture is my primary entry point for tasks and notes. I trigger capture with Doom’s capture command (commonly =SPC X=) and pick a template key.
+
+I override Doom’s default =t= template so it captures a real TODO into my inbox.
+
+#+begin_src emacs-lisp
+(after! org
+  (setq org-capture-templates
+        `(
+          ("t" "Todo (inbox)" entry
+           (file ,org-inbox-file)
+           "* TODO %^{Task} :inbox:\n%U\n%a\n"
+           :empty-lines 1)
+
+          ("T" "Todo (tagged)" entry
+           (file ,org-inbox-file)
+           "* TODO %^{Task} :inbox:%^{tag|work|personal|homelab}:\n%U\n%a\n"
+           :empty-lines 1)
+
+          ("m" "Meeting" entry
+           (file+headline ,org-projects-file "Meetings")
+           "* %^{Title} %U\n** Notes\n%?\n** Actions\n"
+           :empty-lines 1)
+
+          ("s" "Scheduled" entry
+           (file ,org-tickler-file)
+           "* TODO %?\nSCHEDULED: %^t\n%U\n%a\n"
+           :empty-lines 1)
+
+          ("p" "Templates for projects")
+          ("pt" "Project-local todo" entry
+           (file+headline +org-capture-project-todo-file "Inbox")
+           "* TODO %?\n%i\n%a"
+           :prepend t)
+          ("pn" "Project-local notes" entry
+           (file+headline +org-capture-project-notes-file "Inbox")
+           "* %U %?\n%i\n%a"
+           :prepend t)
+          ("pc" "Project-local changelog" entry
+           (file+headline +org-capture-project-changelog-file "Unreleased")
+           "* %U %?\n%i\n%a"
+           :prepend t)
+
+          ("o" "Centralized templates for projects")
+          ("ot" "Project todo" entry #'+org-capture-central-project-todo-file
+           "* TODO %?\n %i\n %a"
+           :heading "Tasks"
+           :prepend nil)
+          ("on" "Project notes" entry #'+org-capture-central-project-notes-file
+           "* %U %?\n %i\n %a"
+           :heading "Notes"
+           :prepend t)
+          ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file
+           "* %U %?\n %i\n %a"
+           :heading "Changelog"
+           :prepend t))))
+#+end_src
+
+** Agenda views
+The agenda is my primary way to see what I owe and what I should do next.
+
+Custom views:
+- Overview: week agenda + NEXT actions + inbox triage
+- Inbox: inbox only
+- Homelab: tasks tagged homelab
+- Work: tasks tagged work
+
+#+begin_src emacs-lisp
+(after! org
+  (setq org-agenda-custom-commands
+        '(("o" "Overview"
+           ((agenda "" ((org-agenda-span 7)
+                        (org-deadline-warning-days 7)))
+            (todo "NEXT" ((org-agenda-overriding-header "Next actions")))
+            (tags-todo "+inbox" ((org-agenda-overriding-header "Inbox (triage)")))))
+          ("i" "Inbox (triage)"
+           ((tags-todo "+inbox")))
+          ("h" "Homelab"
+           ((tags-todo "homelab")))
+          ("w" "Work"
+           ((tags-todo "work"))))))
+#+end_src
+
+** Usage
+Common actions:
+- Capture a task: =SPC X= then pick =t= / =T= / =m= / =s=
+- Open agenda: =SPC o A=
+- In agenda, run custom commands: press =o= / =i= / =h= / =w=
+- While on a task: schedule with =s=, set deadline with =d=, change state with =t=
 
 ** Tables and TODO highlighting
 These are quality-of-life preferences for Org buffers.
