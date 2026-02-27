@@ -55,6 +55,9 @@
 (package! gptel-forge-prs
   :recipe (:host github :repo "ArthurHeymans/gptel-forge-prs"))
 
-(package! slack
-  :recipe (:host github :repo "emacs-slack/emacs-slack"))
-(package! alert)
+;; Per-machine override (Pantheon laptop/host)
+(when (string= (system-name) "KQ1FYQWP3Q-masoodahmed")
+  (package! slack
+    :recipe (:host github :repo "emacs-slack/emacs-slack"))
+
+  (package! alert))
