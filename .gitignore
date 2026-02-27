@@ -83,3 +83,4 @@ node_modules
 /.config/alfred/Alfred.alfredpreferences/preferences/local/
 /.config/karabiner/automatic_backups/
 /.config/nvim.wip/
+/.config/doom/config.el
