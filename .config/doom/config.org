@@ -29,6 +29,7 @@ Make this file run slightly faster (see [[https://nullprogram.com/blog/2016/12/2
 - [[#projects][Projects]]
 - [[#org-mode][Org mode]]
   - [[#org-paths][Org paths]]
+  - [[#org-keybindings][Org keybindings]]
   - [[#task-management][Task management]]
   - [[#capture-templates][Capture templates]]
   - [[#agenda-views][Agenda views]]
@@ -97,6 +98,30 @@ Org file paths are defined early so capture targets never evaluate to nil.
       org-inbox-file (expand-file-name "inbox.org" org-directory)
       org-projects-file (expand-file-name "projects.org" org-directory)
       org-tickler-file (expand-file-name "tickler.org" org-directory))
+#+end_src
+
+** Org keybindings
+This section defines custom keybindings to improve my Org workflow.
+
+I frequently refile, retag, and update TODO states across multiple Org files
+(inbox, projects, tickler). Instead of saving buffers manually one by one,
+I bind a dedicated leader key to save all open Org buffers at once.
+
+This keeps my workflow fast and intentional:
+- Capture freely
+- Triage and refile
+- Save all Org buffers with a single command
+
+*** Save all Org buffers
+Bind =SPC b o s= to =org-save-all-org-buffers=.
+
+This saves all modified Org buffers without touching non-Org buffers.
+
+#+begin_src emacs-lisp
+(after! org
+  (map! :leader
+        :desc "Save all Org buffers"
+        "b o s" #'org-save-all-org-buffers))
 #+end_src
 
 ** Task management
