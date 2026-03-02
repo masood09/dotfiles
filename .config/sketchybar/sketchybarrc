@@ -129,6 +129,20 @@ sketchybar --add item battery right \
   --subscribe battery system_woke power_source_change
 
 ########################################
+# Nightscout
+########################################
+
+sketchybar --add item nightscout right \
+  --set nightscout \
+    icon=󰖌 \
+    icon.color=$TEXT \
+    icon.padding_right=$PADDINGS \
+    label.color=$TEXT \
+    label.padding_left=$PADDINGS \
+    update_freq=60 \
+    script="$PLUGIN_DIR/nightscout_bg.sh" \
+
+########################################
 # Refresh
 ########################################
 
