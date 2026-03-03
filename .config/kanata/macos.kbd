@@ -1,0 +1,40 @@
+(defcfg
+  process-unmapped-keys yes
+  danger-enable-cmd yes
+  macos-dev-names-include Apple
+)
+
+(defvar
+  tap-time 150
+  hold-time 200
+)
+
+(defalias
+  a_mod    (tap-hold $tap-time $hold-time a lshift)
+  s_mod    (tap-hold $tap-time $hold-time s lctrl)
+  d_mod    (tap-hold $tap-time $hold-time d lalt)
+  f_mod    (tap-hold $tap-time $hold-time f lmet)
+
+  j_mod    (tap-hold $tap-time $hold-time j rmet)
+  k_mod    (tap-hold $tap-time $hold-time k ralt)
+  l_mod    (tap-hold $tap-time $hold-time l rctrl)
+  scln_mod (tap-hold $tap-time $hold-time ; rshift)
+
+  caps_hyper (tap-hold $tap-time $hold-time esc (multi lshift lctrl lalt lmet))
+)
+
+(defsrc
+  esc  1 2 3 4 5 6 7 8 9 0  -  =  bspc
+  tab  q w e r t y u i o p  [  ]  \
+  caps a s d f g h j k l ; '  ret
+  lsft z x c v b n m , . /  rsft
+  lctl lalt lmet     spc        rmet ralt rctl
+)
+
+(deflayer base
+  grave 1 2 3 4 5 6 7 8 9 0  -  =  bspc
+  tab  q w e r t y u i o p  [  ]  \
+  @caps_hyper @a_mod @s_mod @d_mod @f_mod g h @j_mod @k_mod @l_mod @scln_mod ' ret
+  lsft z x c v b n m , . /  bspc
+  lctl lalt lmet     spc        rmet ralt rctl
+)
