@@ -43,6 +43,8 @@ Make this file run slightly faster (see [[https://nullprogram.com/blog/2016/12/2
   - [[#org-heading-typography][Org heading typography]]
 - [[#ai-and-developer-integrations][AI and developer integrations]]
   - [[#gptel--magit][GPTel + Magit]]
+- [[#version-control][Version control]]
+  - [[#commit-message-settings][Commit message settings]]
 - [[#apps][Apps]]
   - [[#slack-for-work][Slack (For work)]]
   - [[#alert-for-work][Alert (For work)]]
@@ -335,6 +337,16 @@ Integrates GPTel with Forge pull request workflows.
   :after forge
   :config
   (gptel-forge-prs-install))
+#+end_src
+
+* Version control
+** Commit message settings
+Disable the confirmation prompt that fires when a commit summary exceeds 72 characters.
+Setting to =nil= causes a format-specifier error, so we use a high number instead.
+
+#+begin_src emacs-lisp
+(after! git-commit
+  (setq git-commit-summary-max-length 999))
 #+end_src
 
 * Apps
