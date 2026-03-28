@@ -48,7 +48,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-(package! catppuccin-theme)
 (package! gptel :recipe (:nonrecursive t))
 (package! gptel-magit)
 

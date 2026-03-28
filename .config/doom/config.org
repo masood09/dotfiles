@@ -38,6 +38,7 @@ Make this file run slightly faster (see [[https://nullprogram.com/blog/2016/12/2
 - [[#look-and-feel][Look and feel]]
   - [[#font][Font]]
   - [[#theme][Theme]]
+  - [[#opacity][Opacity]]
   - [[#line-numbers][Line numbers]]
   - [[#org-heading-typography][Org heading typography]]
 - [[#ai-and-developer-integrations][AI and developer integrations]]
@@ -274,14 +275,21 @@ TODO Highlighting
 The primary font used for the UI and editing. If the font isn’t found, confirm it’s installed and use =M-x describe-font=.
 
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 12.0))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16))
 #+end_src
 
 ** Theme
 Doom themes are set via =doom-theme=. Theme changes are applied on restart or with =M-x doom/reload-theme=.
 
 #+begin_src emacs-lisp
-(setq doom-theme 'catppuccin)
+(setq doom-theme 'doom-gruvbox)
+#+end_src
+
+** Opacity
+Set frame background opacity to 90% for a slight transparency effect.
+
+#+begin_src emacs-lisp
+(push '(alpha-background . 90) default-frame-alist)
 #+end_src
 
 ** Line numbers
