@@ -264,7 +264,7 @@ These are quality-of-life preferences for Org buffers.
       org-modern-table t)
 #+end_src
 
-TODO Highlighting
+*** TODO Highlighting
 
 #+begin_src emacs-lisp
 (add-hook 'org-mode-hook #'hl-todo-mode)
